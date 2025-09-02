@@ -1,2 +1,3 @@
 # hello-world
-his repository is for practicing the GitHub Flow.
+This repository is for practicing the GitHub Flow.
+Justyn Cushing - juscus0676
