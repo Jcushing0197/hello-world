@@ -1,9 +1,9 @@
 <?php
-namespace Model;
+namespace Models;
 
 use mysqli;
 
-class Database {
+class DbContext {
     private $host = "localhost";
     private $dbname = "sdc310l";
     private $username = "root";
