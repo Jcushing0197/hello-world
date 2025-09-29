@@ -1,47 +1,36 @@
 <?php
 namespace Controllers;
-
-use Models\DbContext;
+use Models\Cart;
+require_once __DIR__ . '/../Models/Cart.php';
 
 class CartController {
-    private $conn;
+    private $cartModel;
 
     public function __construct() {
-        $db = new DbContext();
-        $this->conn = $db->getConnection();
+        $this->cartModel = new Cart();
         session_start();
     }
 
-    // Get all cart items
+    // Get all cart items from session
     public function getCart() {
         return $_SESSION['cart'] ?? [];
     }
 
-    // Add items to the cart
+    // Add items to the cart (session only)
     public function addToCart($items) {
         $_SESSION['cart'] = $items;
     }
 
-    // Remove item by ID
+    // Remove item by ID from session
     public function removeItem($id) {
         if (isset($_SESSION['cart'][$id])) {
             unset($_SESSION['cart'][$id]);
         }
     }
 
-    // Fetch product details for given IDs
+    // Get product details from DB for given IDs
     public function getProducts($productIds) {
-        if (empty($productIds)) return [];
-
-        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
-        $sql = "SELECT product_id, product_name, price FROM products WHERE product_id IN ($placeholders)";
-        $stmt = $this->conn->prepare($sql);
-
-        $types = str_repeat('i', count($productIds));
-        $stmt->bind_param($types, ...$productIds);
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $this->cartModel->getProducts($productIds);
     }
 }
+

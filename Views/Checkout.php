@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
         <h1>Thank you! Your order has been placed.</h1>
         <a href="Products.php" class="btn">Back to Products</a>
 
-    <?php elseif (empty($cart) || max($cart) == 0): ?>
+    <?php elseif (empty($cart) || array_sum($cart) == 0): ?>
         <h1>You have no items to checkout :(</h1>
         <a href="Products.php" class="btn">Continue Shopping</a>
 

@@ -3,7 +3,6 @@
 
 <?php
 include __DIR__ . '/../navbar.php'; 
-require_once __DIR__ . '/../Models/DbContext.php';
 require_once __DIR__ . '/../Controllers/CartController.php';
 
 use Controllers\CartController;

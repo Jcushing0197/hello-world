@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../Controllers/ProductsController.php';
 use Controllers\ProductsController;
-
 $productsController = new ProductsController();
 $products = $productsController->getAllProducts();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@ $products = $productsController->getAllProducts();
 </head>
 <body>
 
-<?php include __DIR__ . '/../navbar.php'; ?> <!-- Navbar is here -->
+<?php include __DIR__ . '/../navbar.php'; ?> 
 
 <div class="sweep"></div>
 <div class="sweep sweep2"></div>
